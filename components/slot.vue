@@ -1,20 +1,8 @@
-<template>
-<div id="slot">
-    <h1>{{msg}}</h1>
-	 <img src="/images/index_bg_04.jpg">
-   <!-- 轉跳後所載入的 component 最後會顯示在此 -->
-   <ul>
-	   <li><router-link :to="{path: '/slot/'}">Index</router-link></li>
-	    <li><router-link :to="{path: '/slot/post'}">Post</router-link></li>
-	   <li><router-link :to="{path: '/slot/about'}">About</router-link></li>
-	   <li><router-link :to="{path: '/slot/count'}">Count</router-link></li>
-   </ul>
-   
-    
-    <hr>
-   
-   <slot/>
-</div>
+<template lang="pug">
+	div#slot
+		h1 {{postTitle}}
+		img(src="/images/example.jpg")
+		slot
 
 
 </template>
@@ -27,29 +15,27 @@ export default {
 			msg: 'Slot with layouts',
 		};
 	},
+	props: ['postTitle'],
 };
 </script>
 
-<style lang="scss">
-#app {
-	font-family: 'Avenir', Helvetica, Arial, sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	text-align: center;
-	color: #2c3e50;
-	margin-top: 60px;
+<style lang="scss" scoped>
+#slot {
+	padding-bottom: 25px;
+	h1 {
+		font-size: 30px;
+		color: #f57f42;
+		font-weight: 800;
+		line-height: 2;
+	}
+	img{
+		width: 100%;
+		margin: 0 0 25px;
+	}
+	p{
+		color: #464665;
+		line-height: 1.6;
+	}
 }
-ul {
-	list-style: none;
-	width: 25%;
-	margin: 0 auto;
-	padding: 0;
-}
-li {
-	width: 20%;
-	display: inline-block;
-}
-img.logo {
-	width: 100px;
-}
+
 </style>
