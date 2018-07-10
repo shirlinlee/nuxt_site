@@ -1,0 +1,45 @@
+{
+    "name": "quarkbiosciences",
+    "version": "1.0.0",
+    "description": null,
+    "author": "lee",
+    "private": true,
+    "scripts": {
+        "dev": "nuxt",
+        "build": "nuxt build",
+        "start": "nuxt build && cross-env PORT=3333 nuxt start",
+        "generate": "nuxt generate",
+        "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+        "precommit": "npm run lint"
+    },
+    "dependencies": {
+        "axios": "^0.18.0",
+        "fs": "0.0.1-security",
+        "jquery": "^3.3.1",
+        "jshint": "^2.9.5",
+        "net": "^1.0.2",
+        "nginx": "0.0.0",
+        "nuxt": "^1.0.0",
+        "pm2": "^2.10.4",
+        "vue-carousel": "^0.6.9",
+        "vue-i18n": "^7.3.2",
+        "vue-scroll-reveal": "^1.0.7",
+        "vue2-touch-events": "^1.0.0",
+        "vuex": "^3.0.1",
+        "vuex-router-sync": "^5.0.0",
+        "vue": "^2.2.6",
+        "vue-router": "^2.4.0"
+    },
+    "devDependencies": {
+        "babel-eslint": "^8.2.1",
+        "cross-env": "^5.1.5",
+        "eslint": "^4.15.0",
+        "eslint-friendly-formatter": "^3.0.0",
+        "eslint-loader": "^1.7.1",
+        "eslint-plugin-vue": "^4.0.0",
+        "node-sass": "^4.7.2",
+        "pug": "^2.0.0-beta6",
+        "pug-loader": "^2.3.0",
+        "sass-loader": "^6.0.6"
+    }
+}
