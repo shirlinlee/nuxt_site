@@ -11,16 +11,51 @@ body,
 html {
     width: 100%;
     overflow-x: hidden;
+    text-align: center;
+}
+
+.slide-fade-enter-active {
+    transition: all .3s ease;
+}
+.slide-fade-leave-active {
+    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to{
+    opacity: 0;
 }
 
 .fade-enter-active,
 .fade-leave-active {
-    transition: opacity .2s;
+    transition: all .5s;
+    transform: translate(0, 0);
 }
 
-.fade-enter,
+.fade-enter {
+    opacity: 0;  
+}
+
 .fade-leave-to {
     opacity: 0;
+}
+
+.list-enter-active {
+    transition: all .6s;
+    /* position: absolute; */
+}
+
+.list-leave-active {
+    transition: all 0s;
+    /* position: absolute; */
+}
+
+.list-enter {
+    opacity: 0;
+    /* transform: translateY(30px); */
+}
+
+.list-leave-to {
+    opacity: 0;
+    /* position: absolute; */
 }
 
 #__layout>* {
@@ -47,7 +82,6 @@ hr {
     font-family: 'Roboto', 'Segoe Ui', sans-serif;
 }
 
-
 /* .en p {
     font-family: 'Nunito', sans-serif;
     font-weight: 400;
@@ -56,7 +90,6 @@ hr {
 .f_robo {
     font-family: 'Roboto', 'Segoe Ui', sans-serif;
 }
-
 
 /* .f_nuni {
     font-family: 'Nunito', sans-serif;

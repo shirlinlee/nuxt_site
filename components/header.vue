@@ -11,28 +11,14 @@
             <nuxt-link class="headerLink f15" @click.native="menuClick" :to="$i18n.path('')" exact>
               {{ $t('links.home') }}
             </nuxt-link>
+            <nuxt-link class="headerLink f15" @click.native="menuClick" :to="$i18n.path('article')" exact>
+              {{ $t('links.article') }}
+            </nuxt-link>
+            <nuxt-link class="headerLink f15" @click.native="menuClick" :to="$i18n.path('list')" exact>
+              list 
+            </nuxt-link>
           </div>
           
-          <div class="headerLink f15 sub_link" v-on:mouseenter="isPc ? openSub('company',true):null"  v-on:touchstart="!isPc ? openSub('company',true): null">
-            <span>{{ $t('links.company') }}</span>
-            <div v-bind:class="{'show': support_open }" v-on:click="mb_menu_open = false" class="sub_menu hx4">
-                <nuxt-link :to="$i18n.path('company#blog')" exact>{{ $t('links.blog') }}</nuxt-link>
-            </div>
-          </div>
-          
-          <ul class="langMenu">
-            <li class="langLink">
-              <nuxt-link v-bind:class="{ 'active': $i18n.locale === 'en' }" :to="{ params: { lang: 'en' }}" @click.native="menuClick" active-class="none" exact>
-                {{ $t('links.english') }}
-              </nuxt-link>
-            </li>
-            <li class="langLink">
-              <nuxt-link v-bind:class="{ 'active': $i18n.locale === 'tw' }" :to="{ params: { lang: 'tw' }}"  @click.native="menuClick" active-class="none" exact>
-                {{ $t('links.tradition') }}
-              </nuxt-link>
-            </li>
-            
-          </ul>
         </nav>
         
         <div v-bind:class="{ham:true,open:mb_menu_open}" @click="menuHandler">

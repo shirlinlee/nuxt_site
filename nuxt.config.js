@@ -1,4 +1,6 @@
 const axios = require('axios');
+const webpack = require('webpack');
+
 module.exports = {
     /*
      ** Headers of the page
@@ -8,8 +10,6 @@ module.exports = {
         meta: [
             { charset: 'utf-8' },
             { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-            { name: 'google-site-verification', content: 'kQ4BC0_h7RQmC3p5UB-CNpsVZXibQekymPkrcpu9Hrk' },
-            
             { hid: 'description', name: 'description', content: 'quarkbiosciences' }
         ],
         link: [
@@ -23,37 +23,31 @@ module.exports = {
     router: {
         middleware: 'i18n'
     },
-    plugins: ['~/plugins/i18n.js', { src: '~plugins/vue-carousel', ssr: false }, { src: '~/plugins/vue-scroll-reveal', ssr: false }],
+    plugins: [
+        '~/plugins/i18n.js', 
+        { src: '~plugins/vue-carousel', ssr: false }, 
+        { src: '~/plugins/vue-scroll-reveal', ssr: false }
+        // { src: '~/plugins/jquery', ssr: false }
+    ],
     generate: {
-        routes: ['/', '/en', '/tw', '/blog/1', 'news/1', 'video/1'],
+        routes: ['/', '/en', '/tw'],
     },
-    // generate: {
-    //     routes: [
-    //         function() {
-    //             return axios.get('http://210.68.186.61:8082/Videos/en')
-    //                 .then((res) => {
-    //                     return res.data.map((user) => {
-    //                         return '/video/' + user.id
-    //                     })
-
-    //                 })
-    //         },
-    //         '/', '/en', '/tw', '/blog/1', 'news/1', 'video/1'
-
-    //     ]
-    // },
-    /*
-     ** Customize the progress bar color
-     */
-    loading: { color: '#3B8070' },
-    /*
-     ** Build configuration
-     */
+    loading: {
+        color: '#838094',
+        height: '5px'
+    },
+    // loading: '~/components/loading.vue',
     build: {
         /*
          ** Run ESLint on save
          */
         vendor: ['vue-i18n', 'jquery'],
+        plugins: [
+            new webpack.ProvidePlugin({
+              '$': 'jquery',
+              '_': 'lodash'
+            })
+        ],
         extend(config, { isDev, isClient }) {
             if (isDev && isClient) {
                 config.module.rules.push({

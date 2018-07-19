@@ -5,6 +5,8 @@ Vue.use(Router)
 
 const _15d05811 = () => import('../pages/index.vue' /* webpackChunkName: "pages/index" */).then(m => m.default || m)
 const _f5061be2 = () => import('../pages/_lang/index.vue' /* webpackChunkName: "pages/_lang/index" */).then(m => m.default || m)
+const _8dcde81e = () => import('../pages/_lang/list.vue' /* webpackChunkName: "pages/_lang/list" */).then(m => m.default || m)
+const _39ae8ef3 = () => import('../pages/_lang/article.vue' /* webpackChunkName: "pages/_lang/article" */).then(m => m.default || m)
 const _8f5c635e = () => import('../pages/_lang/news/_id.vue' /* webpackChunkName: "pages/_lang/news/_id" */).then(m => m.default || m)
 
 
@@ -74,6 +76,16 @@ export function createRouter () {
 			path: "/:lang",
 			component: _f5061be2,
 			name: "lang"
+		},
+		{
+			path: "/:lang/list",
+			component: _8dcde81e,
+			name: "lang-list"
+		},
+		{
+			path: "/:lang/article",
+			component: _39ae8ef3,
+			name: "lang-article"
 		},
 		{
 			path: "/:lang/news/:id?",

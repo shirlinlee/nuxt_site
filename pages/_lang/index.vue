@@ -1,5 +1,5 @@
 <template>
-  <transition name="fade">
+  <transition name="slide-fade">
     <div id="index">
       <div id="kv">
         <no-ssr>
@@ -35,9 +35,10 @@
 
             
           </div>
-          <div class="W100 t_center">
-            <nuxt-link class="btn" v-scroll-reveal.reset="{ delay: 0 }" :to="$i18n.path('company#blog')" exact><span class="f_grey">{{$t('home.sec4_btn')}}</span></nuxt-link>
-          </div>
+          <form v-on:submit.native.prevent="send">
+              <input type="text" name="email">
+              <button>Send</button>
+          </form>
         </div>
       </div>
   
@@ -64,22 +65,20 @@
     data() {
       const storeData = this.$store.state;
       return {
+        requireData: require('@/assets/RestaurantsList.json'), //靜態json檔
         total: [],
         total_number: 0,
         news_array:this.$store.state[this.$store.state.locale].news_order,
         blog_array:this.$store.state[this.$store.state.locale].blog_order,
         video_array:this.$store.state[this.$store.state.locale].video_order,
         banners: storeData[storeData.locale].index.banners,
-        stories: storeData[storeData.locale].index.stories,
-        imgDefault: 'http://www.bomb01.com/upload/news/original/a29af7ee95d9cf379049b44016d1cd4f.jpg',
+        stories: storeData[storeData.locale].index.stories
       }
     },
     computed: {
       kvNum: function() {
         return 'num_'+this.banners.length;
       },
-      
-      
     },
     head() {
       return {
@@ -99,47 +98,54 @@
         // console.log(`/${this.$store.state.locale}/${cata}/${id}`);
         window.location=`/${this.$store.state.locale}/${cata}/${id}`;
       },
+      send: function(e) {
+          alert('Send method!');
+      }
     },
     mounted: function() {
-      console.log(this.$store.state[this.$store.state.locale]);
+      console.log(this.requireData);
       this.latest();
     }
   }
 </script>
 
-<style>
+<style lang="scss">
   #kv {
     max-height: 95vh;
     overflow: hidden;
     position: relative;
+    h1 {
+      /* white-space: nowrap; */
+      padding-bottom: 15px;
+      letter-spacing: 0;
+    }
+    .VueCarousel-navigation-button {
+      z-index: 50;
+      position: absolute;
+      top: 11px;
+      left: 0;
+      background-size: 20px;
+      background-repeat: no-repeat;
+      background-position: center;
+      transform: none;
+    }
   }
   
-  #kv h1 {
-    /* white-space: nowrap; */
-    padding-bottom: 15px;
-    letter-spacing: 0;
-  }
-  
-  #kv .VueCarousel-navigation-button {
-    z-index: 50;
-    position: absolute;
-    top: 11px;
-    left: 0;
-    background-size: 20px;
-    background-repeat: no-repeat;
-    background-position: center;
-    transform: none;
-  }
-  
-  #kv a.VueCarousel-navigation-prev {
-    background-image: url(/images/arrow_03.png);
-    left: initial;
-  }
-  
-  #kv a.VueCarousel-navigation-next {
-    background-image: url(/images/arrow_04.png);
-    right: 12px;
-    left: initial;
+
+
+  form {
+    input {
+      border: none;
+    }
+    button {
+      color: #fff;
+      background-color: #f57f42;
+      margin: 20px auto;
+      display: inline-block;
+      padding: 6px 25px;
+      font-size: 16px;
+
+    }
   }
   
   .VueCarousel-navigation {
@@ -169,16 +175,6 @@
     max-width: 1150px;
   }
 
-  #kv .num_3 a.VueCarousel-navigation-prev{
-    right: 135px;
-  }
-  #kv .num_4 a.VueCarousel-navigation-prev{
-    right: 155px;
-  }
-  #kv .num_5 a.VueCarousel-navigation-prev{
-    right: 170px;
-  }
-  
   .kv_text {
     top: 24vh;
     left: 5%;
@@ -191,39 +187,7 @@
     line-height:1.5;
     font-size:  19px;
   }
-  
-  #home_intro {
-    padding: 70px 0;
-    text-align: center;
-    background-image: url(/images/index_bg_01.png);
-    background-repeat: repeat-x;
-    /* background-size: contain; */
-    margin-top: -150px;
-    z-index: 50;
-    position: relative;
-    overflow: visible;
-  }
-  
-  #home_intro p {
-    padding-bottom: 20px;
-  }
-  
-  #home_intro img {
-    bottom: 0;
-    left: 10%;
-  }
-  
-  #home_system {
-    padding: 90px 0 140px;
-    text-align: center;
-    background-image: url(/images/index_bg_03.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    z-index: 50;
-    position: relative;
-  }
 
-  
   div#stories_news {
     margin: 0;
     position: relative;
@@ -303,9 +267,6 @@
       position: relative;
       padding: 15px 15px 20px;
       left: 0;
-    }
-    #home_intro {
-      padding: 70px 0 30px;
     }
 
   }

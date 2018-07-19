@@ -9,17 +9,17 @@
     <div class="icon" v-on:click="(e)=>shareHandler('fb')">
         <img src="/images/icon_14.jpg" width="100%" alt="">
     </div>
-    <script >
-      window.___gcfg = {
-        lang: 'zh-CN',
-        parsetags: 'onload'
-      };
-    </script>
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <script src="https://assets.pinterest.com/js/pinit.js" type="text/javascript" async defer></script>
+    
   </div>
 </template>
-
+<script >
+  window.___gcfg = {
+    lang: 'zh-CN',
+    parsetags: 'onload'
+  };
+</script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="https://assets.pinterest.com/js/pinit.js" type="text/javascript" async defer></script>
 <script>
   export default {
     name: 'socialIcon',

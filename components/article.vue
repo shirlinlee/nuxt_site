@@ -1,5 +1,5 @@
 <template lang="pug">
-	div#slot
+	div.article
 		h1 {{postTitle}}
 		img(src="/images/example.jpg")
 		slot
@@ -9,7 +9,7 @@
 
 <script>
 export default {
-	name: 'LayoutDefault',
+	name: 'Article',
 	data() {
 		return {
 			msg: 'Slot with layouts',
@@ -20,13 +20,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#slot {
+.article {
+	width:50%;
+	float: left;
+	padding: 0 15px;
 	padding-bottom: 25px;
+	text-align: left;
 	h1 {
-		font-size: 30px;
+		font-size: 23px;
 		color: #f57f42;
 		font-weight: 800;
-		line-height: 2;
+		line-height: 1.2;
+		padding-bottom: 15px;
 	}
 	img{
 		width: 100%;
@@ -35,6 +40,12 @@ export default {
 	p{
 		color: #464665;
 		line-height: 1.6;
+	}
+}
+
+@media screen and (max-width: 414px) {
+	.article {
+		width:100%;
 	}
 }
 

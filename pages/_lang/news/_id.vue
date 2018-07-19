@@ -1,23 +1,24 @@
 <template>
-  <section class="news_page bg_white">
-      <div class="W100">
-          <img :src="src" width="100%" alt="" class="article_img">
+  <transition name="fade">
+    <section class="news_page bg_white">
+        <div class="W100">
+            <img :src="src" width="100%" alt="" class="article_img">
+          </div>
+        <div class="W100 W880">
+          <h4>
+            {{ title }}
+          </h4>
+          <h6>{{ date }}</h6>
+          <div class="detail" v-html="des"/>
         </div>
-      <div class="W100 W880">
-        <h4>
-           {{ title }}
-        </h4>
-        <h6>{{ date }}</h6>
-        <div class="detail" v-html="des"/>
-      </div>
-      <br/>
-      <div class="W100 W880 t_center">
-        <SocialIcon :title="title" :src="src" :shareLink="shareLink"/>
-        <nuxt-link :to="$i18n.path('company#news')" class="btn" exact><span class="f_orange">Back</span></nuxt-link>
-      </div>
-      
-
-  </section>
+        <br/>
+        <div class="W100 W880 t_center">
+          <SocialIcon :title="title" :src="src" :shareLink="shareLink"/>
+          <nuxt-link :to="$i18n.path('company#news')" class="btn" exact><span class="f_orange">Back</span></nuxt-link>
+        </div>
+    </section>
+  </transition>
+  
 </template>
 
 <script>
@@ -114,7 +115,7 @@ export default {
 <style scoped>
 .news_page {
   text-align: center; 
-  padding: 110px 0;
+  padding: 50px 0;
 }
 
 
